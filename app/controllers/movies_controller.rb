@@ -11,13 +11,8 @@ class MoviesController < ApplicationController
   end
 
   def index
+    @movies = Movie.find(:all, :order => (params[:sort_by]))
     @sortby = params[:sort_by]
-    
-    if(@sortby != nil)
-      @movies = Movie.find(:all, :order => (params[:sort_by]))
-    else
-      @movies = Movie.all
-    end
   end
 
   def new
