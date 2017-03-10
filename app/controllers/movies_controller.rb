@@ -14,7 +14,7 @@ class MoviesController < ApplicationController
     @sortby = params[:sort_by]
     
     if(@sortby != nil)
-      @movies = Movie.find(:all, :order => (params[:sort_by]))
+      @movies = Movie.order(@sortby).all
       redirect_to movies_path(:sort_by => @sortby)
     else
         @movies = Movie.all
